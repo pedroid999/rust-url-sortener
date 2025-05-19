@@ -1,0 +1,19 @@
+[serve]
+port = 8080
+
+# Proxies simplificados para coincidir con el backend
+[[proxy]]
+rewrite = "/shorten"
+backend = "http://127.0.0.1:8081/shorten"
+
+[[proxy]]
+rewrite = "/dashboard"
+backend = "http://127.0.0.1:8081/dashboard"
+
+# Crearemos redirección manualmente para el resto
+# (no configuramos un proxy adicional, esto se manejará desde el frontend)
+
+[build]
+# Opciones adicionales de compilación
+target = "index.html"
+dist = "dist" 
